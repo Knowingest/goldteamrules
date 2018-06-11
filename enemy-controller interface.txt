@@ -12,6 +12,22 @@ restore_hp(amount)
 amount get_hp()
 	returns self.hp of unit
 
+self.player_damage
+		this shows how much damage was just dealt to the player.  
+		The controller can read this variable to find out how much damage an attack did.
+
+self.pet_damage
+	this can be used for when an attack targets the dog/sidekick character instead of the player
+
+damage get_player_damage()
+	returns self.player_damage
+
+damage get_pet_damage()
+	returns self.pet_damage
+
+
+
+-------------------
 take_turn()
 	start the unit's turn.  The controller will call this function when a unit's turn starts
 	inside this function, you can outline what the unit does
@@ -19,26 +35,28 @@ take_turn()
 			maybe it does a big attack that damages itself
 			maybe it heals itself when its low on health
 
-self.damage
-		this shows how much damage was just dealt.  The controller can read this variable to
-		find out how much damage an attack did.
+	this behaviour could be randomly generated, or maybe determined by how much hp a unit has
 
-deal_damage(amount)
-	sets self.damage to (amount)
+	maybe some special attack happens when they take more that 5 damage in one turn
 
-damage get_damage()
-	returns self.damage
+	maybe it's moves cycle between a few options, based on what it did last turn.
+
+	maybe some attacks hit the player, some hit the dog
+
+	maybe some attacks hit both
 
 ---------------------
 example, a unit could heal itself:	
 		restore_hp(5)
-		deal_damage(0)
+		player_damage = 0
+		pet_damage = 0
 
 the controller would then get_hp() to see the change in hp, and treat damage == 0 as a unit not attacking that turn
 ---------------------
 another example
 		remove_hp(2)
-		deal_damage(10)
+	    player_damage = 10
+	    pet_damage = 10
 
 unit damages itself to do a powerful attack
 
