@@ -1,0 +1,53 @@
+enemy member functions / variables:
+
+self.hp
+		self explanatory
+
+remove_hp(amount)
+	lowers unit hp.  the controller class can call this function when damage is dealt
+
+restore_hp(amount)
+	same thing in reverse
+
+amount get_hp()
+	returns self.hp of unit
+
+take_turn()
+	start the unit's turn.  The controller will call this function when a unit's turn starts
+	inside this function, you can outline what the unit does
+			maybe it deals damage based on how much hp its missing
+			maybe it does a big attack that damages itself
+			maybe it heals itself when its low on health
+
+self.damage
+		this shows how much damage was just dealt.  The controller can read this variable to
+		find out how much damage an attack did.
+
+deal_damage(amount)
+	sets self.damage to (amount)
+
+damage get_damage()
+	returns self.damage
+
+---------------------
+example, a unit could heal itself:	
+		restore_hp(5)
+		deal_damage(0)
+
+the controller would then get_hp() to see the change in hp, and treat damage == 0 as a unit not attacking that turn
+---------------------
+another example
+		remove_hp(2)
+		deal_damage(10)
+
+unit damages itself to do a powerful attack
+
+---------------------
+
+these functions are the framework for a unit, 
+with their AI being a series of if statements inside
+the take_turn() function
+
+I think this is good for now but we could also do things like: 
+make player.hp a global variable so that enemies can change
+their behaviour based on player hp, or other such behaviour

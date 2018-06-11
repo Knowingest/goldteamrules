@@ -45,9 +45,6 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 		print("Player HP = " + str(self.p1.hp))
 
-
-		
-
 if __name__ == "__main__":
 	test = encounter(20, 4)
 	#for dude in test.enemy_team:
