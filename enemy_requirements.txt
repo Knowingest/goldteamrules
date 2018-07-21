@@ -1,0 +1,62 @@
+enemy member functions / variables:
+
+self.hp
+		self explanatory
+
+self.dmg
+		this shows how much damage was just dealt this turn
+		The controller can read this variable to find out how much damage an attack did.
+
+self.msg
+		a string that describes the attack
+		usage examples:
+
+			"XXX used fireball"
+			"XXX is charging an attack"
+			"XXX holds its turn"
+			(XXX = the enemy's name)
+
+-------------------
+take_turn()
+	start the unit's turn.  The controller will call this function when a unit's turn starts
+	inside this function, you can outline what the unit does
+			maybe it deals damage based on how much hp its missing
+			maybe it does a big attack that damages itself
+			maybe it heals itself when its low on health
+
+	this behaviour could be randomly generated, or maybe determined by how much hp a unit has
+
+	maybe some special attack happens when they take more that 5 damage in one turn
+
+	maybe it's moves cycle between a few options, based on what it did last turn.
+
+	This function will set self.dmg and self.msg to describe what it did this turn
+
+---------------------
+example, a unit called "Blub" could heal itself:	
+		self.hp += 5 				#heal self by adding health
+		self.dmg = 0 				#set damage to zero, since this wouldn't deal any damage
+
+				#set message to something descriptive
+		self.msg = "Blub healed itself!" 
+
+---------------------
+another example
+		self.hp -= 2
+	    self.dmg = 10
+	    
+	    self.msg = "Blub made a reckless attack!"
+
+unit damages itself to do a powerful attack
+
+---------------------
+additional ideas:
+	unit could charge for multiple turns in order to make a big attack
+---------------------
+
+these concepts are the framework for a unit, 
+with their AI being a series of if statements inside
+the take_turn() function
+
+the controller class will go through all of the enemies on the board,
+and can read out the results of their turns one by one.
