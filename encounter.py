@@ -12,10 +12,11 @@ class baddie(): #stand-in enemy class
 	def __init__(self):
 		self.dmg = 0
 		self.hp = 5
-		self.is_dead = False
+		self.msg = "Baddie does nothing"
 
 	def take_turn(self):
 		self.dmg = 1
+		self.msg = "Baddie uses Slap!"
 
 class player(): #stand in player class
 	def __init__(self, hp):
