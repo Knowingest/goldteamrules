@@ -6,66 +6,50 @@
 
 import random
 import sys
-
-class enemy(object):
-	def __init__(self):
-		self.hp = 10
-		self.is_dead = False
-		self.atk_hp = self.atk()
-		self.defe_hp = self.defe()
-#		self.check = print("World")
-	def atk(self):
-		x = random.randint(1,3)
-		return x
-		
-	def defe(self):
-		y = random.randint(1,2)
-		return y
-
-
-		# damage taken = atk - def
+from enemy import *
+from taketurn import *
 
 class player(object):
 	def __init__(self):
-		self.is_dead = False
 		self.hp = 20
-		self.defe_hp = self.defe()
-		self.atk_hp = self.atk()
-#		self.check = print("Hello") 	# check
-	def atk(self):
-		x = random.randint(0,3)
-		return x
-		
-	def defe(self):
-		y = random.randint(0,2)
+		self.def_hp = random.randint(1,2) #changed from 0,2 cause val of 0 was possible
+		self.atk_hp = random.randint(1,3)
 
+
+def startMenu():
+	print("Welcome to --insert game name here--")
+	print("N - (N)ew game")
+	print("L - (L)oad game")
 
 if __name__ == "__main__":
-	Hero = player()
-	BadE = enemy()
-#	print("FooBar")	# check	
-	while(True):
-		print("--- NEW RUN ---")
-		a = Hero.atk_hp
-		b = BadE.defe_hp
-		print("Hero ATK -> " , a)
-		print("BadE DEF -> " , b)
-		print("BadE HP -> " , BadE.hp)
-		print("Hero HP -> " , Hero.hp)
+	startMenu()
+	i = input().lower()
+	if i == 'n':
+		Hero = player()
+	elif i == 'l':
+		0 # take in values from file to assign as hp, def, point in story?
+	elif i == 's':
+		showStats() #show stats feature?
 
-#	while(True):
-		if(Hero.hp <= 0):
-			print("BadE wins??")
-			break
-		if(BadE.hp <= 0):
-			print("Hero wins!!")
-			break
-		print("BadE_HP -> " , BadE.hp)
-		print("Hero ATK -> " , a)
-		print("BadE DEF -> " , b)
-		BadE.hp = a - b		# this does bad math?
-		print("BadE_HP -> " , BadE.hp)
-	sys.exit()
+	#takeTurn(Hero, 0) #if there is no enemy then use 0 to take turn of moving around map
+
+	BadE1= mother()
+	BadE2= mother()
+	BadE3= mother()
+	BadETeam = []
+	BadETeam = [BadE1,BadE2,BadE3]
+	check = takeTurn(Hero, BadETeam) 	# we stay at this line in main until enemy is dead or hero dies,
+										# you dont need to recall taketurn more than once for the same enemy
+	if check == 1: # check if dead
+		del Hero # if died del all characters
+		for x in BadETeam:
+			del x
+		del BadETeam
+		startMenu()
+
+	#continue on with the story
+
+	exit(0)
 
 # In main: 
 #  -> BadE[enemy() for i in range(0,//random number))] to set the number of enemys
@@ -78,3 +62,4 @@ if __name__ == "__main__":
 #
 #
 #
+
