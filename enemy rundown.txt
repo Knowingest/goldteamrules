@@ -1,0 +1,33 @@
+blub
+-----
+-easy enemy
+-squishy
+-Doesn't hit very hard
+
+big blub
+--------
+-hits a bit harder than blub
+-tank sort of dude
+-idea to make it divide into two smaller blubls
+
+spooder
+-------
+-hits hard
+-decent health
+-poison?
+
+snek
+--------
+-harder than blub, easier than spooder
+-damage taken when it hits too hard
+
+skullitor
+--------
+-fire damage
+-charge up attack?
+
+mother
+-------
+-final boss
+-make her tough and strong
+-special attacks?
