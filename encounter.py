@@ -4,17 +4,13 @@
 #		encounter.print_board():
 #				prints board information
 
-
-
-
-
 class baddie(): #stand-in enemy class
 	def __init__(self):
 		self.dmg = 0
 		self.hp = 5
 		self.is_dead = False
 
-	def take_turn(self):
+	def take_turn(self): 
 		self.dmg = 1
 
 class player(): #stand in player class
@@ -30,6 +26,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 		self.p1 = player
 
 				#prints board information to console
+				#this is mostly used for testing
 	def print_board(self):
 		print("********")
 		for i in range(0, len(self.enemy_team)):
@@ -47,9 +44,11 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 		print("Player HP = " + str(self.p1.hp))
 
-	def take_turn(self, move, target):
-		if move == 1:
-			self.enemy_team[target].hp -= self.p1.atk1
+
+		#dmg and target represent who the player will hit, and how much damage it deals
+			#calling take_turn() with appropriate arguments is how we control the player
+	def take_turn(self, dmg, target):
+		self.enemy_team[target].hp -= dmg
 
 		for e in self.enemy_team:
 			if e.hp > 0:
@@ -58,7 +57,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 
 
-
+				#this main function is just for testing purposes
 if __name__ == "__main__":
 	b = list()
 	for x in range(5):
@@ -71,8 +70,7 @@ if __name__ == "__main__":
 
 		#print board, kill a dude, print board again
 	test.print_board()
-	test.take_turn(1, 2)
+	test.take_turn(5, 1)
 	test.print_board()
-	test.take_turn(1, 2)
+	test.take_turn(5, 3)
 	test.print_board()
-
