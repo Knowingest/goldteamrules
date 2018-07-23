@@ -63,7 +63,7 @@ def takeTurn(Hero, BadETeam):
 
             #enemy team attacks hero
             for x in BadETeam:
-                if x.attr.atk_hp > x.attr.def_hp: # right now if attack is less than def then hero will not take damage
+                if x.attr.atk_hp > Hero.def_hp: # right now if attack is less than def then hero will not take damage
                     Hero.hp -= x.attr.atk_hp - Hero.def_hp
                     print(x.attack1)
                     print(x.name + " deals " + str(x.attr.atk_hp - Hero.def_hp) + " damage to you!")
