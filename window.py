@@ -8,10 +8,12 @@ class Window(QtWidgets.QWidget):
 
 	def __init__(self):
 		QtWidgets.QWidget.__init__(self)
+		self.width=888
+		self.height=684
 		self.setup()
 		
 	def setup(self):
-		self.setGeometry(10,10,888,684)
+		self.setGeometry(10,10,self.width,self.height)
 		self.setWindowTitle("Testing")
 		self.p = Painting(self)
 		self.show()
@@ -21,48 +23,65 @@ class Painting(QtWidgets.QWidget):
 	def __init__(self, parent):
 		QtWidgets.QWidget.__init__(self,parent)
 		self.bg = "First"
-		self.setFixedSize(888,684)
+		self.width=888
+		self.height=684
+		self.setFixedSize(self.width,self.height)
 		self.setup()
 		
 	def setup(self):
 		self.butt = QtWidgets.QPushButton("Start Game",self)
-		self.butt.move(20,20)
+		self.butt.move(400,400)
 		self.butt.clicked.connect(self.firstArea)
-		self.back=False
 		self.show()
 	
 	def paintEvent(self, event):
-		if(self.back):
-			qp = QtGui.QPainter()
-			qp.begin(self)
+		
+		qp = QtGui.QPainter()
+		qp.begin(self)
 			
-			pen = qp.pen()
-			pen.setColor(QtCore.Qt.transparent)
-			qp.setPen(pen)
+		pen = qp.pen()
+		pen.setColor(QtCore.Qt.transparent)
+		qp.setPen(pen)
 			
-			bush = QtGui.QBrush()
+		bush = QtGui.QBrush()
+		if self.bg =="first":
+			bush.setTextureImage(QtGui.QImage("background1.png"))
+		elif self.bg=="second":
+			bush.setTextureImage(QtGui.QImage("background2.png"))
+		elif self.bg=="third":
+			bush.setTextureImage(QtGui.QImage("background3.png"))
+		elif self.bg=="fourth":
+			bush.setTextureImage(QtGui.QImage("background4.png"))
+		elif self.bg=="fifth":
+			bush.setTextureImage(QtGui.QImage("background5.png"))
+		elif self.bg=="sixth":
+			bush.setTextureImage(QtGui.QImage("background6.png"))
+		else: #self.bg=="arena":
 			bush.setTextureImage(QtGui.QImage("bigarena.png"))
-			qp.setBrush(bush)
 			
-			qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,684),QtCore.QPoint(888,684),QtCore.QPoint(888,0))
+		qp.setBrush(bush)
 			
-			bush = QtGui.QBrush()
-			bush.setTextureImage(QtGui.QImage("iliaattack.gif"))
-			qp.setBrush(bush)
+		qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,684),QtCore.QPoint(888,684),QtCore.QPoint(888,0))
 			
-			qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,180),QtCore.QPoint(228,180),QtCore.QPoint(228,0))
-			qp.end()
-			self.butt.setParent(None)
+		bush = QtGui.QBrush()
+		bush.setTextureImage(QtGui.QImage("iliaattack.gif"))
+		qp.setBrush(bush)
+			
+		qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,180),QtCore.QPoint(228,180),QtCore.QPoint(228,0))
+		qp.end()
+		self.butt.setParent(None)
 	
 	def arenaArea(self,event):
-		self.back=True
 		self.update()
 	
 	def firstArea(self,event):
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
 		self.secbutt.move(20,20)
 		self.secbutt.clicked.connect(self.arenaArea)
+		#self.secbutt.setParent(self)
+		
 		self.bg = "first"
+		self.butt.setParent(None)
 		self.show()
 		self.update()
 
