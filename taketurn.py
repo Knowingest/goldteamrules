@@ -2,9 +2,9 @@ from enemy import blub
 import random
 
 def showStats(Hero, BadETeam):
-	print("My HP:     " + str(Hero.hp))
-	print("My Atk:    " + str(Hero.atk_hp))
-	print("My Def:    " + str(Hero.def_hp))
+	print("My HP:  " + str(Hero.hp))
+	print("My Atk: " + str(Hero.atk_hp))
+	print("My Def: " + str(Hero.def_hp))
 	i = 1
 	for x in BadETeam:
 		print("-----Enemy #" + str(i) + "-----")
@@ -24,11 +24,11 @@ def takeTurn(Hero, BadETeam):
         elif i == 'e':
             0
         elif i == 's':
-            0
+            00.
 
         return 0
 
-    else:  # a fight
+    else: # a fight
         j = 0 # index+1 of which enemy you will fight
         i = input("(A)ttack, (D)efend, (R)un, use (I)tem, (S)how stats\n>: ").lower()  # .lower makes input letter lowercase
         if i == "a":
