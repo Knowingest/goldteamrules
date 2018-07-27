@@ -93,22 +93,58 @@ class Painting(QtWidgets.QWidget):
 		self.thirdbutt = QtWidgets.QPushButton("Forward",self)
 		self.thirdbutt.move(20,20)
 		self.thirdbutt.clicked.connect(self.thirdArea)
+		
 		self.bg = "second"
 		self.show()
 		self.update()
 	
 	def thirdArea(self,event):
+		self.secbutt = QtWidgets.QPushButton("Back", self)
+		self.secbutt.move(0,0)
+		self.secbutt.clicked.connect(self.secondArea)
+
+		self.fobutt = QtWidgets.QPushButton("Forward", self)
+		self.fobutt.move(25,25)
+		self.fobutt.clicked.connect(self.fourthArea)
+		
+		self.fivbutt = QtWidgets.QPushButton("Forward", self)
+		self.fivbutt.move(35,35)
+		self.fivbutt.clicked.connect(self.fifthArea)
+
 		self.bg = "third"
+		self.show()
+		self.update()
 	
 	def fourthArea(self,event):
+		self.thirdbutt = QtWidgets.QPushButton("Back", self)
+		self.thirdbutt.move(0,0)
+		self.thirdbutt.clicked.connect(self.thirdArea)
+
 		self.bg = "fourth"
-	
+		self.show()
+		self.update()
+
 	def fifthArea(self,event):
+		self.thirdbutt = QtWidgets.QPushButton("Back", self)
+		self.thirdbutt.move(0,0)
+		self.thirdbutt.clicked.connect(self.thirdArea)
+		
+		self.sexbutt = QtWidgets.QPushButton("Forward", self)
+		self.sexbutt.move(0,0)
+		self.sexbutt.clicked.connect(self.sixthArea)
+
 		self.bg = "fifth"
+		self.show()
+		self.update()
 	
 	def sixthArea(self,event):
+		self.fivbutt = QtWidgets.QPushButton("Back", self)
+		self.fivbutt.move(0,0)
+		self.fivbutt.clicked.connect(self.fifthArea)
+
 		self.bg = "sixth"
-	
+		self.show()
+		self.update()
 	
 		
 if __name__=="__main__":
