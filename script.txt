@@ -1,0 +1,111 @@
+Ilia: *groggily waking up* What happened?
+Ilia: Huh--? A cave-in?
+Ilia: This isn't good...
+Ilia: Guess I need to find a way out.
+Ilia: What is this place even? All these swirls...
+
+Blub: *squish*
+
+Ilia: What... is that?
+
+Blub: *squiiiish*
+
+Ilia: Gross. *pokes it with her sword*
+
+Blub: *SQUASH*
+
+Ilia: Oh no. Good thing I brought this sword.
+
+Battle start!
+
+Ilia: *huff* *huff* Alright. *huff* That wasn't too bad. *huff*
+Ilia: Let's go.
+
+--------------
+Area 2:
+Ilia: Hey, water. Now I'll only starve to death.
+Ilia: ...? There's something in here.
+Ilia: ....
+Ilia: "Beware of mother...?" What does that mean?
+
+//Next fight
+
+--------------
+Area 3:
+Ilia: A crossroads... That's neat. Which way, then?
+Spooder: *hiss*
+Ilia: Oh, this again. Guess I'll decide afterwards.
+
+//Next fight
+
+Ilia: What's with this place? So many monsters.
+Ilia: Guess that's what I get for exploring a cave armed with a sword.
+
+--------------
+Area 5:
+(Prior to Area 4 visit)
+
+Ilia: What is this wall? Looks creepy... It's super different from the other swirls.
+Ilia: This thing kind of looks like a lock. Do I need a key?
+Ilia: Ah, here we go again.
+//Fight!
+
+--------------
+Area 4:
+(After area 5 visit)
+
+Ilia: Oh great. I guess this guy is some sort of miniboss.
+
+Big Blub: *SQUISH*
+
+Ilia: You have the key, I bet. Here we go.
+
+//Battle
+
+
+GOT RED KEY
+Ilia: Yup. There it is.
+
+--------------
+Area 4:
+(prior to area 5 visit)
+
+Big Blub: *SQUISH*
+
+Ilia: Whoa there. You're a bit bigger than the other guys...
+
+Big Blub: *SQUOSH*
+
+Ilia: You wanna go, then? Alright!
+
+//Fight
+
+Ilia: Huh? A key? Guess I'll find out what this is for.
+
+--------------
+Area 5:
+(after getting key)
+
+Ilia: Red key, red wall with a keyhole... this should work.
+Ilia: Locked wall thing, meet weird key thing.
+//Change BG
+Ilia: It worked! Hopefully this will lead somewhere useful...
+
+---------------
+Area 6:
+Ilia: Whoa... This is beautiful.
+
+Mother: Hello, my child. Are you alright?
+
+Ilia: Who are you?
+
+Mother: My name is Mother. I've been watching your struggle. Are you hurt at all?
+
+Ilia: I'm a little scuffed up, yeah, but I'm fine.
+
+Mother: Come here. Let me heal you.
+
+Approach Mother? [Y/N]
+
+
+
