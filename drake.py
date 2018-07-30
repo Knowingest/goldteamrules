@@ -1,3 +1,4 @@
 '''new file'''
 
-print("Who cares")
+print("GOOD LUCK")
+
