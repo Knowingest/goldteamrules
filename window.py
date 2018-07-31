@@ -71,9 +71,9 @@ class Painting(QtWidgets.QWidget):
 		qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,684),QtCore.QPoint(888,684),QtCore.QPoint(888,0))
 			
 		qp.end()
-	def buttcleaner():
+	def buttcleaner(self):
 		self.backbutt.hide()
-		self.fobutt.hide()
+		self.forbutt.hide()
 		self.kamikaze.hide()
 	
 	def arenaArea(self,event):
@@ -94,6 +94,7 @@ class Painting(QtWidgets.QWidget):
 
 	def secondArea(self,event):
 		self.bg = "second"	
+		self.buttcleaner()
 		self.backbutt.move(20,20)
 		self.backbutt.clicked.connect(self.firstArea)
 		
@@ -109,6 +110,7 @@ class Painting(QtWidgets.QWidget):
 	
 	def thirdArea(self,event):
 		self.bg = "third"
+		self.buttcleaner()
 		self.backbutt.move(0,0)
 		self.backbutt.clicked.connect(self.secondArea)
 
@@ -131,6 +133,7 @@ class Painting(QtWidgets.QWidget):
 	
 	def fourthArea(self,event):
 		self.bg = "fourth"	
+		self.buttcleaner()
 		self.backbutt.move(300,300)
 		self.backbutt.clicked.connect(self.thirdArea)
 
@@ -142,6 +145,7 @@ class Painting(QtWidgets.QWidget):
 
 	def fifthArea(self,event):
 		self.bg = "fifth"		
+		self.buttcleaner()
 		self.backbutt.move(14,14)
 		self.backbutt.clicked.connect(self.thirdArea)
 		
@@ -156,7 +160,8 @@ class Painting(QtWidgets.QWidget):
 		self.prev = "fifth"
 	
 	def sixthArea(self,event):
-		self.bg = "sixth"		
+		self.bg = "sixth"	
+		self.buttcleaner()	
 		self.backbutt.move(84,84)
 		self.backbutt.clicked.connect(self.fifthArea)
 
