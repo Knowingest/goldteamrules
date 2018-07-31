@@ -70,9 +70,10 @@ class Painting(QtWidgets.QWidget):
 				self.fivbutt.setParent(None)
 			elif self.prev == "sixth":
 				self.fivbutt.setParent(None)
-		elif self.bg="sixth":
+		elif self.bg=="sixth":
 			self.fivbutt.setParent(None)
 		else: #self.bg=="arena":
+			print("lol")
 
 	def paintEvent(self, event):
 		
@@ -109,8 +110,8 @@ class Painting(QtWidgets.QWidget):
 		self.update()
 	
 	def firstArea(self,event):
-		self.hideyobutts()
 		self.bg = "first"
+		self.hideyobutts()
 		self.update()
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
 		self.secbutt.move(400,400)
@@ -119,6 +120,7 @@ class Painting(QtWidgets.QWidget):
 		self.prev = "first"
 
 	def secondArea(self,event):
+		self.bg = "second"		
 		self.hideyobutts()
 		self.firstbutt = QtWidgets.QPushButton("Back",self)
 		self.firstbutt.move(20,20)
@@ -130,12 +132,13 @@ class Painting(QtWidgets.QWidget):
 		
 		self.firstbutt.show()
 		self.thirdbutt.show()
-		self.bg = "second"
+
 		self.show()
 		self.update()
 		self.prev = "second"
 	
 	def thirdArea(self,event):
+		self.bg = "third"
 		self.hideyobutts()
 		self.secbutt = QtWidgets.QPushButton("Back", self)
 		self.secbutt.move(0,0)
@@ -152,24 +155,26 @@ class Painting(QtWidgets.QWidget):
 		self.secbutt.show()
 		self.fobutt.show()
 		self.fivbutt.show()
-		self.bg = "third"
+
 		self.show()
 		self.update()
 		self.prev = "third"
 	
 	def fourthArea(self,event):
+		self.bg = "fourth"		
 		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
 		self.thirdbutt.move(300,300)
 		self.thirdbutt.clicked.connect(self.thirdArea)
 
 		self.thirdbutt.show()
-		self.bg = "fourth"
+
 		self.show()
 		self.update()
 		self.prev = "fourth"
 
 	def fifthArea(self,event):
+		self.bg = "fifth"		
 		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
 		self.thirdbutt.move(14,14)
@@ -181,19 +186,20 @@ class Painting(QtWidgets.QWidget):
 
 		self.thirdbutt.show()
 		self.sexbutt.show()
-		self.bg = "fifth"
+
 		self.show()
 		self.update()
 		self.prev = "fifth"
 	
 	def sixthArea(self,event):
+		self.bg = "sixth"		
 		self.hideyobutts()
 		self.fivbutt = QtWidgets.QPushButton("Back", self)
 		self.fivbutt.move(84,84)
 		self.fivbutt.clicked.connect(self.fifthArea)
 
 		self.fivbutt.show()
-		self.bg = "sixth"
+
 		self.show()
 		self.update()
 		self.prev = "sixth"
