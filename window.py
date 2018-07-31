@@ -39,55 +39,40 @@ class Painting(QtWidgets.QWidget):
 		#self.lay.setLayout(self.grid)
 	
 	def hideyobutts(self):
-		if self.prev =="first":
-			self.butt.setParent(None)
-			self.secbutt.setParent(None)
-		elif self.prev =="second":
-			self.secbutt.setParent(None)
+		if self.bg =="first":
+			if self.prev == "lol":
+				self.butt.setParent(None)
+			elif self.prev == "second":
+				self.firstbutt.setParent(None)
+				self.thirdbutt.setParent(None)
+		elif self.bg == "second":
+			if self.prev == "first":
+				self.secbutt.setParent(None)
+			elif self.prev == "third":
+				self.secbutt.setParent(None)
+				self.fobutt.setParent(None)
+				self.fivbutt.setParent(None)
+		elif self.bg=="third":
+			if self.prev == "second":
+				self.firstbutt.setParent(None)
+				self.thirdbutt.setParent(None)
+			elif self.prev == "fourth":
+				self.thirdbutt.setParent(None)
+			elif self.prev == "fifth":
+				self.thirdbutt.setParent(None)
+				self.sexbutt.setParent(None)
+		elif self.bg=="fourth":
 			self.thirdbutt.setParent(None)
-			self.fobutt.setParent(None)
-			self.fivbutt.setParent(None)
-		elif self.prev =="third":
-			self.secbutt.setParent(None)
-			self.thirdbutt.setParent(None)
-			self.fobutt.setParent(None)
-			self.fivbutt.setParent(None)
-		elif self.prev =="fourth":
-			self.thirdbutt.setParent(None)
-		elif self.prev =="fifth":
-			self.secbutt.setParent(None)
-			self.thirdbutt.setParent(None)
-			self.fobutt.setParent(None)
-			self.fivbutt.setParent(None)
-		elif self.prev =="sixth":
+		elif self.bg=="fifth":
+			if self.prev == "third":
+				self.secbutt.setParent(None)
+				self.fobutt.setParent(None)
+				self.fivbutt.setParent(None)
+			elif self.prev == "sixth":
+				self.fivbutt.setParent(None)
+		elif self.bg="sixth":
 			self.fivbutt.setParent(None)
 		else: #self.bg=="arena":
-	'''		if self.prev =="first":
-				self.butt.setParent(None)
-				self.secbutt.setParent(None)
-			elif self.prev=="second":
-				self.secbutt.setParent(None)
-				self.thirdbutt.setParent(None)
-				self.fobutt.setParent(None)
-				self.fivbutt.setParent(None)
-			elif self.prev=="third":
-				self.secbutt.setParent(None)
-				self.thirdbutt.setParent(None)
-				self.fobutt.setParent(None)
-				self.fivbutt.setParent(None)
-			elif self.prev=="fourth":
-				self.thirdbutt.setParent(None)
-			elif self.prev=="fifth":
-				self.secbutt.setParent(None)
-				self.thirdbutt.setParent(None)
-				self.fobutt.setParent(None)
-				self.fivbutt.setParent(None)
-			elif self.prev="sixth":
-				self.fivbutt.setParent(None)'''
-
-
-
-
 
 	def paintEvent(self, event):
 		
@@ -130,8 +115,6 @@ class Painting(QtWidgets.QWidget):
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
 		self.secbutt.move(400,400)
 		self.secbutt.clicked.connect(self.secondArea)
-		self.secbutt.setFixedWidth(100)
-		self.secbutt.setFixedHeight(20)
 		self.secbutt.show()
 		self.prev = "first"
 
@@ -142,7 +125,7 @@ class Painting(QtWidgets.QWidget):
 		self.secbutt.clicked.connect(self.firstArea)
 		
 		self.thirdbutt = QtWidgets.QPushButton("Forward",self)
-		self.thirdbutt.move(20,20)
+		self.thirdbutt.move(80,80)
 		self.thirdbutt.clicked.connect(self.thirdArea)
 		
 		self.firstbutt.show()
