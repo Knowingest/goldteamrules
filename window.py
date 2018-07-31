@@ -22,6 +22,8 @@ class Window(QtWidgets.QWidget):
 class Painting(QtWidgets.QWidget):
 	def __init__(self, parent):
 		QtWidgets.QWidget.__init__(self,parent)
+		#self.lay = QtWidgets.QWidget()
+		#self.grid = QtWidgets.QGridLayout()
 		self.bg = "intro"
 		self.width=888
 		self.height=684
@@ -32,7 +34,8 @@ class Painting(QtWidgets.QWidget):
 		self.butt = QtWidgets.QPushButton("Start Game",self)
 		self.butt.move(400,400)
 		self.butt.clicked.connect(self.firstArea)
-		self.show()
+		#self.grid.addWidget(self.butt,1,1)
+		#self.lay.setLayout(self.grid)
 	
 	def paintEvent(self, event):
 		
@@ -69,14 +72,15 @@ class Painting(QtWidgets.QWidget):
 		self.update()
 	
 	def firstArea(self,event):
+		self.butt.setParent(None)
 		self.bg = "first"
 		self.update()
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
 		self.secbutt.move(400,400)
-		self.secbutt.clicked.connect(self.arenaArea)
-		self.butt.setParent(None)
-		#self.secbutt.setParent(self)
-		#self.show()
+		self.secbutt.clicked.connect(self.secondArea)
+		self.secbutt.setFixedWidth(100)
+		self.secbutt.setFixedHeight(20)
+		self.secbutt.show()
 
 	def secondArea(self,event):
 		self.firstbutt = QtWidgets.QPushButton("Back",self)
