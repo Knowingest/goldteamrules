@@ -87,11 +87,17 @@ class Painting(QtWidgets.QWidget):
 		self.backbutt.move(400,400)
 		self.backbutt.clicked.connect(self.secondArea)
 
+		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
+		self.kamikaze.hide()
+		self.kamikaze.move(127, 127)
+		self.kamikaze.clicked.connect(self.fifthArea)
+
 		self.forbutt.show()
 		self.prev = "first"
 
 	def secondArea(self,event):
-		self.bg = "second"		
+		self.bg = "second"	
+		self.kamikaze.hide()	
 		self.backbutt.move(20,20)
 		self.backbutt.clicked.connect(self.firstArea)
 		
@@ -113,7 +119,6 @@ class Painting(QtWidgets.QWidget):
 		self.forbutt.move(25,25)
 		self.forbutt.clicked.connect(self.fourthArea)
 
-		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
 		self.kamikaze.move(127, 127)
 		self.kamikaze.clicked.connect(self.fifthArea)
 
@@ -130,6 +135,7 @@ class Painting(QtWidgets.QWidget):
 	
 	def fourthArea(self,event):
 		self.bg = "fourth"	
+		self.kamikaze.hide()
 		self.forbutt.hide()	
 		self.backbutt.move(300,300)
 		self.backbutt.clicked.connect(self.thirdArea)
@@ -141,7 +147,8 @@ class Painting(QtWidgets.QWidget):
 		self.prev = "fourth"
 
 	def fifthArea(self,event):
-		self.bg = "fifth"		
+		self.bg = "fifth"	
+		self.kamikaze.hide()	
 		self.backbutt.move(14,14)
 		self.backbutt.clicked.connect(self.thirdArea)
 		
