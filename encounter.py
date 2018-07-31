@@ -1,3 +1,5 @@
+import sys
+
 #Important information:
 #		encounter class:
 #				takes parameters player_hp, and enemy_number
@@ -32,9 +34,11 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 		print("********")
 		for i in range(0, len(self.enemy_team)):
 			if self.enemy_team[i].hp < 1:
-				print("XX", end = " ")
+				sys.stdout.write("XX ")
+				sys.stdout.flush()
 			else:
-				print("E" + str(i + 1), end = " ")
+				sys.stdout.write("E" + str(i + 1) + " ")
+				sys.stdout.flush()
 
 		print("\nP1")
 		print("********")
