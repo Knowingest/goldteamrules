@@ -40,7 +40,7 @@ class Painting(QtWidgets.QWidget):
 	
 	def hideyobutts(self):
 		if self.bg =="first":
-			if self.prev == "lol":
+			if self.prev == "intro":
 				self.butt.setParent(None)
 			elif self.prev == "second":
 				self.firstbutt.setParent(None)
@@ -111,7 +111,8 @@ class Painting(QtWidgets.QWidget):
 	
 	def firstArea(self,event):
 		self.bg = "first"
-		self.hideyobutts()
+		self.prev = "intro"
+		self.hideyobutts(self)
 		self.update()
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
 		self.secbutt.move(400,400)
@@ -121,7 +122,7 @@ class Painting(QtWidgets.QWidget):
 
 	def secondArea(self,event):
 		self.bg = "second"		
-		self.hideyobutts()
+		self.hideyobutts(self)
 		self.firstbutt = QtWidgets.QPushButton("Back",self)
 		self.firstbutt.move(20,20)
 		self.secbutt.clicked.connect(self.firstArea)
