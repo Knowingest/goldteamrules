@@ -75,6 +75,7 @@ class Painting(QtWidgets.QWidget):
 	def firstArea(self,event):
 		self.bg = "first"
 		self.prev = "intro"
+		self.butt.setParent(None)
 		self.update()
 
 		self.forbutt = QtWidgets.QPushButton("Forward",self)
@@ -109,8 +110,8 @@ class Painting(QtWidgets.QWidget):
 		self.backbutt.move(0,0)
 		self.backbutt.clicked.connect(self.secondArea)
 
-		self.fobutt.move(25,25)
-		self.fobutt.clicked.connect(self.fourthArea)
+		self.forbutt.move(25,25)
+		self.forbutt.clicked.connect(self.fourthArea)
 
 		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
 		self.kamikaze.move(127, 127)
@@ -118,6 +119,7 @@ class Painting(QtWidgets.QWidget):
 
 		self.backbutt.show()
 		self.forbutt.show()
+		self.kamikaze.show()
 
 		'''need to do encounter counter
 		when = 4'''
@@ -127,7 +129,8 @@ class Painting(QtWidgets.QWidget):
 		self.prev = "third"
 	
 	def fourthArea(self,event):
-		self.bg = "fourth"		
+		self.bg = "fourth"	
+		self.forbutt.hide()	
 		self.backbutt.move(300,300)
 		self.backbutt.clicked.connect(self.thirdArea)
 
@@ -154,7 +157,7 @@ class Painting(QtWidgets.QWidget):
 	
 	def sixthArea(self,event):
 		self.bg = "sixth"		
-
+		self.forbutt.hide()
 		self.backbutt.move(84,84)
 		self.backbutt.clicked.connect(self.fifthArea)
 
