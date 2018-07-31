@@ -38,6 +38,7 @@ class Painting(QtWidgets.QWidget):
 		self.forbutt = QtWidgets.QPushButton("Forward", self)
 		self.backbutt = QtWidgets.QPushButton("Backwards", self)
 		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
+		self.buttcleaner()
 		#self.grid.addWidget(self.butt,1,1)
 		#self.lay.setLayout(self.grid)
 
