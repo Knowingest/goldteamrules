@@ -22,7 +22,7 @@ class Window(QtWidgets.QWidget):
 class Painting(QtWidgets.QWidget):
 	def __init__(self, parent):
 		QtWidgets.QWidget.__init__(self,parent)
-		self.bg = "First"
+		self.bg = "intro"
 		self.width=888
 		self.height=684
 		self.setFixedSize(self.width,self.height)
@@ -63,27 +63,20 @@ class Painting(QtWidgets.QWidget):
 			
 		qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,684),QtCore.QPoint(888,684),QtCore.QPoint(888,0))
 			
-		bush = QtGui.QBrush()
-		bush.setTextureImage(QtGui.QImage("iliaattack.gif"))
-		qp.setBrush(bush)
-			
-		qp.drawPolygon(QtCore.QPoint(0,0), QtCore.QPoint(0,180),QtCore.QPoint(228,180),QtCore.QPoint(228,0))
 		qp.end()
-		self.butt.setParent(None)
 	
 	def arenaArea(self,event):
 		self.update()
 	
 	def firstArea(self,event):
-		self.secbutt = QtWidgets.QPushButton("Forward",self)
-		self.secbutt.move(20,20)
-		self.secbutt.clicked.connect(self.arenaArea)
-		#self.secbutt.setParent(self)
-		
 		self.bg = "first"
-		self.butt.setParent(None)
-		self.show()
 		self.update()
+		self.secbutt = QtWidgets.QPushButton("Forward",self)
+		self.secbutt.move(400,400)
+		self.secbutt.clicked.connect(self.arenaArea)
+		self.butt.setParent(None)
+		#self.secbutt.setParent(self)
+		#self.show()
 
 	def secondArea(self,event):
 		self.firstbutt = QtWidgets.QPushButton("Back",self)
