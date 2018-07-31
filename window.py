@@ -177,7 +177,7 @@ class Painting(QtWidgets.QWidget):
 	def fourthArea(self,event):
 		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
-		self.thirdbutt.move(0,0)
+		self.thirdbutt.move(300,300)
 		self.thirdbutt.clicked.connect(self.thirdArea)
 
 		self.thirdbutt.show()
@@ -189,11 +189,11 @@ class Painting(QtWidgets.QWidget):
 	def fifthArea(self,event):
 		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
-		self.thirdbutt.move(0,0)
+		self.thirdbutt.move(14,14)
 		self.thirdbutt.clicked.connect(self.thirdArea)
 		
 		self.sexbutt = QtWidgets.QPushButton("Forward", self)
-		self.sexbutt.move(0,0)
+		self.sexbutt.move(129,129)
 		self.sexbutt.clicked.connect(self.sixthArea)
 
 		self.thirdbutt.show()
@@ -206,7 +206,7 @@ class Painting(QtWidgets.QWidget):
 	def sixthArea(self,event):
 		self.hideyobutts()
 		self.fivbutt = QtWidgets.QPushButton("Back", self)
-		self.fivbutt.move(0,0)
+		self.fivbutt.move(84,84)
 		self.fivbutt.clicked.connect(self.fifthArea)
 
 		self.fivbutt.show()
