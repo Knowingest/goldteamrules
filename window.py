@@ -25,6 +25,7 @@ class Painting(QtWidgets.QWidget):
 		#self.lay = QtWidgets.QWidget()
 		#self.grid = QtWidgets.QGridLayout()
 		self.bg = "intro"
+		self.prev = "lol"
 		self.width=888
 		self.height=684
 		self.setFixedSize(self.width,self.height)
@@ -39,19 +40,51 @@ class Painting(QtWidgets.QWidget):
 	
 	def hideyobutts(self):
 		if self.bg =="first":
-			self.
+			self.butt.setParent(None)
+			self.secbutt.setParent(None)
 		elif self.bg=="second":
-			bush.setTextureImage(QtGui.QImage("background2.png"))
+			self.secbutt.setParent(None)
+			self.thirdbutt.setParent(None)
+			self.fobutt.setParent(None)
+			self.fivbutt.setParent(None)
 		elif self.bg=="third":
-			bush.setTextureImage(QtGui.QImage("background3.png"))
+			self.secbutt.setParent(None)
+			self.thirdbutt.setParent(None)
+			self.fobutt.setParent(None)
+			self.fivbutt.setParent(None)
 		elif self.bg=="fourth":
-			bush.setTextureImage(QtGui.QImage("background4.png"))
+			self.thirdbutt.setParent(None)
 		elif self.bg=="fifth":
-			bush.setTextureImage(QtGui.QImage("background5.png"))
+			self.secbutt.setParent(None)
+			self.thirdbutt.setParent(None)
+			self.fobutt.setParent(None)
+			self.fivbutt.setParent(None)
 		elif self.bg=="sixth":
-			bush.setTextureImage(QtGui.QImage("background6.png"))
+			self.fivbutt.setParent(None)
 		else: #self.bg=="arena":
-			bush.setTextureImage(QtGui.QImage("bigarena.png"))
+			if self.prev =="first":
+				self.butt.setParent(None)
+				self.secbutt.setParent(None)
+			elif self.prev=="second":
+				self.secbutt.setParent(None)
+				self.thirdbutt.setParent(None)
+				self.fobutt.setParent(None)
+				self.fivbutt.setParent(None)
+			elif self.prev=="third":
+				self.secbutt.setParent(None)
+				self.thirdbutt.setParent(None)
+				self.fobutt.setParent(None)
+				self.fivbutt.setParent(None)
+			elif self.prev=="fourth":
+				self.thirdbutt.setParent(None)
+			elif self.prev=="fifth":
+				self.secbutt.setParent(None)
+				self.thirdbutt.setParent(None)
+				self.fobutt.setParent(None)
+				self.fivbutt.setParent(None)
+			elif self.prev="sixth":
+				self.fivbutt.setParent(None)
+
 
 
 
@@ -91,7 +124,7 @@ class Painting(QtWidgets.QWidget):
 		self.update()
 	
 	def firstArea(self,event):
-		self.butt.hide()
+		self.hideyobutts()
 		self.bg = "first"
 		self.update()
 		self.secbutt = QtWidgets.QPushButton("Forward",self)
@@ -100,9 +133,10 @@ class Painting(QtWidgets.QWidget):
 		self.secbutt.setFixedWidth(100)
 		self.secbutt.setFixedHeight(20)
 		self.secbutt.show()
+		self.prev = "first"
 
 	def secondArea(self,event):
-		self.butt.setParent(None)
+		self.hideyobutts()
 		self.firstbutt = QtWidgets.QPushButton("Back",self)
 		self.firstbutt.move(20,20)
 		self.secbutt.clicked.connect(self.firstArea)
@@ -116,9 +150,10 @@ class Painting(QtWidgets.QWidget):
 		self.bg = "second"
 		self.show()
 		self.update()
+		self.prev = "second"
 	
 	def thirdArea(self,event):
-		self.
+		self.hideyobutts()
 		self.secbutt = QtWidgets.QPushButton("Back", self)
 		self.secbutt.move(0,0)
 		self.secbutt.clicked.connect(self.secondArea)
@@ -137,8 +172,10 @@ class Painting(QtWidgets.QWidget):
 		self.bg = "third"
 		self.show()
 		self.update()
+		self.prev = "third"
 	
 	def fourthArea(self,event):
+		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
 		self.thirdbutt.move(0,0)
 		self.thirdbutt.clicked.connect(self.thirdArea)
@@ -147,8 +184,10 @@ class Painting(QtWidgets.QWidget):
 		self.bg = "fourth"
 		self.show()
 		self.update()
+		self.prev = "fourth"
 
 	def fifthArea(self,event):
+		self.hideyobutts()
 		self.thirdbutt = QtWidgets.QPushButton("Back", self)
 		self.thirdbutt.move(0,0)
 		self.thirdbutt.clicked.connect(self.thirdArea)
@@ -162,8 +201,10 @@ class Painting(QtWidgets.QWidget):
 		self.bg = "fifth"
 		self.show()
 		self.update()
+		self.prev = "fifth"
 	
 	def sixthArea(self,event):
+		self.hideyobutts()
 		self.fivbutt = QtWidgets.QPushButton("Back", self)
 		self.fivbutt.move(0,0)
 		self.fivbutt.clicked.connect(self.fifthArea)
@@ -172,6 +213,7 @@ class Painting(QtWidgets.QWidget):
 		self.bg = "sixth"
 		self.show()
 		self.update()
+		self.prev = "sixth"
 	
 		
 if __name__=="__main__":
