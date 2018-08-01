@@ -57,7 +57,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 		for e in self.enemy_team:
 			if e.hp > 0:
-				e.take_turn()
+				#e.take_turn()
 				self.p1.hp -= e.dmg
 
 
