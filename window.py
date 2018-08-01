@@ -2,7 +2,9 @@
 
 
 import sys
+from encounter import encounter,baddie,player
 from PyQt5 import QtWidgets, QtGui, QtCore
+import enemy
 
 class Window(QtWidgets.QWidget):
 
@@ -39,8 +41,7 @@ class Painting(QtWidgets.QWidget):
 		self.backbutt = QtWidgets.QPushButton("Backwards", self)
 		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
 		self.buttcleaner()
-		#self.grid.addWidget(self.butt,1,1)
-		#self.lay.setLayout(self.grid)
+		self.encounter=1
 
 	def paintEvent(self, event):
 		
@@ -171,6 +172,72 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "sixth"
+		
+	def fight(self, room):
+		b = list()
+		counter=0
+		ilia = player(20)
+		arena = encounter(ilia, b)
+		ens=5
+		#append enemies
+		if room==1:
+			b.append(blub())
+		elif room==2:
+			#blub and 2 others
+			b.append(blub())
+			b.append(snek())
+		elif room==3:
+			#5 enemies
+		elif room==4:
+			#big blub and 4 other enemies
+		elif room==6:
+			#mother and 4 other enemies
+		charge=False
+		while ens !=0:
+			arena.print_board()
+			if(count%2==0):
+				#Ilia's turn
+				#ask for input
+				#Hard attack
+				if charge==False:
+					while True and charge==False:
+						x = int(input("Light attack (1)---takes 1 turn/nHeavy Attack (2)---takes 2 turns"))
+						#Light attack
+						if x==1:
+							#light attack
+							break
+						elif x==2:
+							charge=True
+							#heavy attack
+							break
+						else:
+							print("Excuse?")
+					ens=b.len()
+						
+					while True:
+						y = int(input("Choose target: " ))#enemy array
+						#error check
+						if y > 0 and y < ens:
+							#do attack
+							if x==1:
+								#light attack
+							elif x==2:
+								#heavy attack
+							if b[y-1].hp<=0:
+								del b[y-1]
+							break
+						else:
+							print("Invalid input. Excuse?")
+					
+				else:
+					print("Too tired to move this turn.")
+					charge=False
+				
+			else:
+				#Enemies' turn
+				#Automatically run
+				print("Enemy is taking a turn")
+			count+=1
 	
 		
 if __name__=="__main__":
