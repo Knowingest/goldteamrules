@@ -67,7 +67,7 @@ class Painting(QtWidgets.QWidget):
 		elif self.bg=="sixth":
 			bush.setTextureImage(QtGui.QImage("background6.png"))
 		elif self.bg=="intro":
-			bush.setTextureImage(QtGui.QImage("startscreen.png")
+			bush.setTextureImage(QtGui.QImage("startscreen.png"))
 		else: 
 			bush.setTextureImage(QtGui.QImage("bigarena.png"))
 			
