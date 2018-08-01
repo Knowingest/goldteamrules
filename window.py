@@ -1,6 +1,5 @@
 '''Example template'''
 
-
 import sys
 from encounter import encounter,baddie,player
 from PyQt5 import QtWidgets, QtGui, QtCore
@@ -36,7 +35,7 @@ class Painting(QtWidgets.QWidget):
 		
 	def setup(self):
 		self.butt = QtWidgets.QPushButton("Start Game",self)
-		self.butt.move(400,400)
+		self.butt.move(650,400)
 		self.butt.clicked.connect(self.firstArea)
 		self.forbutt = QtWidgets.QPushButton("Forwards", self)
 		self.backbutt = QtWidgets.QPushButton("Backwards", self)
@@ -91,7 +90,7 @@ class Painting(QtWidgets.QWidget):
 		self.update()
 		self.buttcleaner()
 		
-		self.forbutt.move(0,0)
+		self.forbutt.move(800,290)
 		self.forbutt.clicked.connect(self.secondArea)
 
 		self.forbutt.show()
@@ -107,10 +106,10 @@ class Painting(QtWidgets.QWidget):
 	def secondArea(self,event):
 		self.bg = "second"	
 		self.buttcleaner()
-		self.backbutt.move(20,20)
+		self.backbutt.move(0,290)
 		self.backbutt.clicked.connect(self.firstArea)
 		
-		self.forbutt.move(80,80)
+		self.forbutt.move(800,290)
 		self.forbutt.clicked.connect(self.thirdArea)
 		
 		self.backbutt.show()
@@ -130,13 +129,13 @@ class Painting(QtWidgets.QWidget):
 	def thirdArea(self,event):
 		self.bg = "third"
 		self.buttcleaner()
-		self.backbutt.move(0,0)
+		self.backbutt.move(50,550)
 		self.backbutt.clicked.connect(self.secondArea)
 
-		self.forbutt.move(25,25)
+		self.forbutt.move(700,100)
 		self.forbutt.clicked.connect(self.fourthArea)
 
-		self.kamikaze.move(127, 127)
+		self.kamikaze.move(800, 620)
 		self.kamikaze.clicked.connect(self.fifthArea)
 
 		self.backbutt.show()
@@ -160,7 +159,7 @@ class Painting(QtWidgets.QWidget):
 	def fourthArea(self,event):
 		self.bg = "fourth"	
 		self.buttcleaner()
-		self.backbutt.move(300,300)
+		self.backbutt.move(0,290)
 		self.backbutt.clicked.connect(self.thirdArea)
 
 		self.backbutt.show()
@@ -179,10 +178,10 @@ class Painting(QtWidgets.QWidget):
 	def fifthArea(self,event):
 		self.bg = "fifth"		
 		self.buttcleaner()
-		self.backbutt.move(14,14)
+		self.backbutt.move(0,290)
 		self.backbutt.clicked.connect(self.thirdArea)
 		
-		self.forbutt.move(129,129)
+		self.forbutt.move(800,290)
 		self.forbutt.clicked.connect(self.sixthArea)
 
 		self.backbutt.show()
@@ -196,7 +195,7 @@ class Painting(QtWidgets.QWidget):
 	def sixthArea(self,event):
 		self.bg = "sixth"	
 		self.buttcleaner()	
-		self.backbutt.move(84,84)
+		self.backbutt.move(300,620)
 		self.backbutt.clicked.connect(self.fifthArea)
 
 		self.backbutt.show()
