@@ -284,8 +284,10 @@ class Painting(QtWidgets.QWidget):
 				charge=False
 				arena.take_turn(0,(y-1))
 			
-
-			print("Enemy is taking a turn")
+			if ens == 0:
+				print("Battle is over!")
+			else:
+				print("Enemy is taking a turn")
 
 		
 if __name__=="__main__":
