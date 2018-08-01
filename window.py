@@ -191,7 +191,7 @@ class Painting(QtWidgets.QWidget):
 			#5 enemies
 			b.append(snek())
 			b.append(spooder())
-			b.append(skullitor)
+			b.append(skullitor())
 			b.append(blub())
 			b.append(blub())
 		elif room==4:
@@ -209,6 +209,7 @@ class Painting(QtWidgets.QWidget):
 			b.append(blub())
 			b.append(spooder())
 		charge=False
+		damage = 0
 		while ens !=0:
 			arena.print_board()
 			if(count%2==0):
@@ -216,15 +217,15 @@ class Painting(QtWidgets.QWidget):
 				#ask for input
 				#Hard attack
 				if charge==False:
-					while True and charge==False:
+					while charge==False:
 						x = int(input("Light attack (1)---takes 1 turn/nHeavy Attack (2)---takes 2 turns"))
 						#Light attack
 						if x==1:
-							#light attack
+							damage = 5
 							break
 						elif x==2:
 							charge=True
-							#heavy attack
+							damage = 15
 							break
 						else:
 							print("Excuse?")
@@ -233,14 +234,8 @@ class Painting(QtWidgets.QWidget):
 					while True:
 						y = int(input("Choose target: " ))#enemy array
 						#error check
-						if y > 0 and y < ens:
-							#do attack
-							if x==1:
-								#light attack
-								arena.take_turn(5,y-1)
-							elif x==2:
-								#heavy attack
-								arena.take_turn(15,y-1)
+						if y > 0 and y <= ens:
+							arena.take_turn(damage, (y-1))
 							if b[y-1].hp<=0:
 								del b[y-1]
 							break
@@ -252,8 +247,9 @@ class Painting(QtWidgets.QWidget):
 					charge=False
 				
 			else:
-				#Enemies' turn
-				#Automatically run
+				for i in b:
+					ilia.hp -= i.taketurn()
+
 				print("Enemy is taking a turn")
 			count+=1
 	
