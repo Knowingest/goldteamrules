@@ -2,14 +2,14 @@
 import random
 
 class blub(object):
-	 def __init__(self):
+	def __init__(self):
 		self.name = "Blub"
 		self.hp = 10
 		self.dmg = 1
 		self.msg = "Blub uses squish!"
 		self.counter = 0
 
-	 def taketurn(self):
+	def take_turn(self):
 	 	self.counter += 1
 		if self.counter == 1:
 			self.dmg = random.randint(1, 3)
@@ -21,14 +21,14 @@ class blub(object):
 		return self.dmg
 
 class bigblub(object):
-	 def __init__(self):
+	def __init__(self):
 		self.name = "Big Blub"
-		self.hp = random.randint(1, 3)
-		self.dmg = random.randint(1, 2)
+		self.hp = 30
+		self.dmg = 1
 		self.msg = "Blub uses squish!"
 		self.counter = 0
 
-	 def taketurn(self):
+	def take_turn(self):
 		if self.hp < 5:
 			x = random.randint(1, 2)
 			if x == 1:
@@ -55,15 +55,15 @@ class bigblub(object):
 
 
 class spooder(object):
-	 def __init__(self):
-		  nameList = ["Spooder", "Spidey", "Spider"]
-		  self.name = random.choice(nameList)
-		  self.hp = random.randint(1, 3)
-		  self.dmg = random.randint(1, 2)
-		  self.msg = self.name + " uses poison!"
-		  self.counter = 0
+	def __init__(self):
+		nameList = ["Spooder", "Spidey", "Spider"]
+		self.name = random.choice(nameList)
+		self.hp = 5
+		self.dmg = 2
+		self.msg = self.name + " uses poison!"
+		self.counter = 0
 
-	 def taketurn(self):
+	def take_turn(self):
 	 	self.counter += 1
 		if self.counter == 1:
 			self.dmg = random.randint(1, 3)
@@ -79,11 +79,11 @@ class snek(object):
 	def __init__(self):
 		nameList = ["Snek", "Snake", "Danger Noodle"]
 		self.name = random.choice(nameList)
-		self.hp = random.randint(1, 3)
-		self.dmg = random.randint(1, 2)
+		self.hp = 5
+		self.dmg = 2
 		self.msg = self.name + " bites you!"
 
-	def taketurn(self):
+	def take_turn(self):
 		self.counter += 1
 		if self.counter == 1:
 			self.dmg = random.randint(1, 6)
@@ -97,13 +97,13 @@ class skullitor(object):
 	def __init__(self):
 		nameList = ["Skullitor", "Creepy Skull", "Skull"]
 		self.name = random.choice(nameList)
-		self.hp = random.randint(1, 3)
-		self.dmg = 0
+		self.hp = 10
+		self.dmg = 3
 		self.msg = self.name + " casts a fire spell at you!"
 		self.bool = False
 		self.counter = 0
 
-	def taketurn(self):
+	def take_turn(self):
 		if self.bool == True:
 			self.dmg += 1
 		self.counter += 1
@@ -121,12 +121,12 @@ class skullitor(object):
 class mother(object):
 	def __init__(self):
 		self.name = "Mother"
-		self.hp = random.randint(1, 3)
-		self.dmg = random.randint(1, 2)
+		self.hp = 50
+		self.dmg = 5
 		self.msg = "Mother beats you with a belt!"
 		self.counter = 0
 
-	 def taketurn(self):
+	def take_turn(self):
 		if self.hp < 7:
 		 	self.dmg *= 2
 			self.counter += 1

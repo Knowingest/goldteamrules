@@ -177,7 +177,6 @@ class Painting(QtWidgets.QWidget):
 		b = list()
 		counter=0
 		ilia = player(20)
-		arena = encounter(ilia, b)
 		ens=5
 		#append enemies
 		if room==1:
@@ -208,6 +207,7 @@ class Painting(QtWidgets.QWidget):
 			b.append(skullitor())
 			b.append(blub())
 			b.append(spooder())
+		arena = encounter(ilia, b)
 		charge=False
 		damage = 0
 		while ens !=0:
@@ -249,6 +249,7 @@ class Painting(QtWidgets.QWidget):
 			else:
 				for i in b:
 					ilia.hp -= i.taketurn()
+					print(i.msg)
 
 				print("Enemy is taking a turn")
 			count+=1
