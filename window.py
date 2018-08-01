@@ -4,7 +4,7 @@
 import sys
 from encounter import encounter,baddie,player
 from PyQt5 import QtWidgets, QtGui, QtCore
-import enemy
+from enemy import *
 
 class Window(QtWidgets.QWidget):
 
@@ -38,7 +38,7 @@ class Painting(QtWidgets.QWidget):
 		self.butt = QtWidgets.QPushButton("Start Game",self)
 		self.butt.move(400,400)
 		self.butt.clicked.connect(self.firstArea)
-		self.forbutt = QtWidgets.QPushButton("Up", self)
+		self.forbutt = QtWidgets.QPushButton("Forwards", self)
 		self.backbutt = QtWidgets.QPushButton("Backwards", self)
 		self.kamikaze = QtWidgets.QPushButton("Down", self)
 		self.buttcleaner()
@@ -96,11 +96,13 @@ class Painting(QtWidgets.QWidget):
 
 		self.forbutt.show()
 		self.prev = "first"
-		if encs ==1:
-			self.fight(1)
+		if self.encs ==1:
 			self.bg="fight"
-			self.update()
+			self.update()			
+			self.fight(1)
 			self.encs+=1
+			self.bg="first"
+			self.update()
 
 	def secondArea(self,event):
 		self.bg = "second"	
@@ -117,11 +119,13 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "second"
-		if encs ==2:
-			self.fight(2)
+		if self.encs ==2:
 			self.bg="fight"
-			self.update()
+			self.update()			
+			self.fight(2)
 			self.encs+=1
+			self.bg="second"
+			self.update()
 	
 	def thirdArea(self,event):
 		self.bg = "third"
@@ -145,11 +149,13 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "third"
-		if encs ==3:
-			self.fight(3)
+		if self.encs ==3:
 			self.bg="fight"
-			self.update()
+			self.update()			
+			self.fight(3)
 			self.encs+=1
+			self.bg="third"
+			self.update()
 	
 	def fourthArea(self,event):
 		self.bg = "fourth"	
@@ -163,10 +169,12 @@ class Painting(QtWidgets.QWidget):
 		self.update()
 		self.prev = "fourth"
 		if self.encs ==4:
-			self.fight(4)
 			self.bg="fight"
-			self.update()
+			self.update()			
+			self.fight(4)
 			self.encs+=1
+			self.bg="fourth"
+			self.update()
 
 	def fifthArea(self,event):
 		self.bg = "fifth"		
@@ -193,15 +201,19 @@ class Painting(QtWidgets.QWidget):
 
 		self.backbutt.show()
 		if self.encs ==6:
-			self.fight(6)
 			self.bg="fight"
-			self.update()
+			self.update()			
+			self.fight(6)
 			self.encs+=1
+			self.bg="sixth"
+			self.update()
 		self.show()
 		self.update()
 		self.prev = "sixth"
 		
 	def fight(self, room):
+		self.bg = "fight"
+		self.update()
 		b = list()
 		counter=0
 		ilia = player(20)
@@ -238,49 +250,44 @@ class Painting(QtWidgets.QWidget):
 		arena = encounter(ilia, b)
 		charge=False
 		damage = 0
+
 		while ens !=0:
 			arena.print_board()
-			if(count%2==0):
-				#Ilia's turn
-				#ask for input
-				#Hard attack
-				if charge==False:
-					while charge==False:
-						x = int(input("Light attack (1)---takes 1 turn/nHeavy Attack (2)---takes 2 turns"))
-						#Light attack
-						if x==1:
-							damage = 5
-							break
-						elif x==2:
-							charge=True
-							damage = 15
-							break
-						else:
-							print("Excuse?")
-					ens=b.len()
-						
-					while True:
-						y = int(input("Choose target: " ))#enemy array
-						#error check
-						if y > 0 and y <= ens:
-							arena.take_turn(damage, (y-1))
-							if b[y-1].hp<=0:
-								del b[y-1]
-							break
-						else:
-							print("Invalid input. Excuse?")
-					
-				else:
-					print("Too tired to move this turn.")
-					charge=False
+			if charge==False:
+				while charge==False:
+					x = int(input("Light attack (1)---takes 1 turn/nHeavy Attack (2)---takes 2 turns"))
+					#Light attack
+					if x==1:
+						damage = 5
+						break
+					elif x==2:
+						charge=True
+						damage = 15
+						break
+					else:
+						print("Excuse?")
+				ens= len(b)
+
+				while True:
+					y = int(input("Choose target: " ))#enemy array
+					#error check
+					if y > 0 and y <= ens:
+						arena.take_turn(damage, (y-1))
+						if b[y-1].hp<=0:
+							del b[y-1]
+							ens -= 1
+						break
+					else:
+						print("Invalid input. Excuse?")
 				
 			else:
-				for i in b:
-					ilia.hp -= i.taketurn()
-					print(i.msg)
+				print("Too tired to move this turn.")
+				charge=False
+				arena.take_turn(0,(y-1))
+			
 
-				print("Enemy is taking a turn")
-			count+=1
+			print("Enemy is taking a turn")
+
 		
 if __name__=="__main__":
 	app = QtWidgets.QApplication(sys.argv)
