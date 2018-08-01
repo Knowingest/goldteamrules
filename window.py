@@ -28,6 +28,7 @@ class Painting(QtWidgets.QWidget):
 		#self.grid = QtWidgets.QGridLayout()
 		self.bg = "intro"
 		self.prev = "lol"
+		
 		self.width=888
 		self.height=684
 		self.setFixedSize(self.width,self.height)
@@ -37,11 +38,11 @@ class Painting(QtWidgets.QWidget):
 		self.butt = QtWidgets.QPushButton("Start Game",self)
 		self.butt.move(400,400)
 		self.butt.clicked.connect(self.firstArea)
-		self.forbutt = QtWidgets.QPushButton("Forward", self)
+		self.forbutt = QtWidgets.QPushButton("Up", self)
 		self.backbutt = QtWidgets.QPushButton("Backwards", self)
-		self.kamikaze = QtWidgets.QPushButton("fake fif", self)
+		self.kamikaze = QtWidgets.QPushButton("Down", self)
 		self.buttcleaner()
-		self.encounter=1
+		self.encs=1
 
 	def paintEvent(self, event):
 		
@@ -65,7 +66,9 @@ class Painting(QtWidgets.QWidget):
 			bush.setTextureImage(QtGui.QImage("background5.png"))
 		elif self.bg=="sixth":
 			bush.setTextureImage(QtGui.QImage("background6.png"))
-		else: #self.bg=="arena":
+		elif self.bg=="intro":
+			bush.setTextureImage(QtGui.QImage("startscreen.png")
+		else: 
 			bush.setTextureImage(QtGui.QImage("bigarena.png"))
 			
 		qp.setBrush(bush)
@@ -87,12 +90,17 @@ class Painting(QtWidgets.QWidget):
 		self.butt.setParent(None)
 		self.update()
 		self.buttcleaner()
-
+		
 		self.forbutt.move(0,0)
 		self.forbutt.clicked.connect(self.secondArea)
 
 		self.forbutt.show()
 		self.prev = "first"
+		if encs ==1:
+			self.fight(1)
+			self.bg="fight"
+			self.update()
+			self.encs+=1
 
 	def secondArea(self,event):
 		self.bg = "second"	
@@ -109,6 +117,11 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "second"
+		if encs ==2:
+			self.fight(2)
+			self.bg="fight"
+			self.update()
+			self.encs+=1
 	
 	def thirdArea(self,event):
 		self.bg = "third"
@@ -132,6 +145,11 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "third"
+		if encs ==3:
+			self.fight(3)
+			self.bg="fight"
+			self.update()
+			self.encs+=1
 	
 	def fourthArea(self,event):
 		self.bg = "fourth"	
@@ -144,6 +162,11 @@ class Painting(QtWidgets.QWidget):
 		self.show()
 		self.update()
 		self.prev = "fourth"
+		if self.encs ==4:
+			self.fight(4)
+			self.bg="fight"
+			self.update()
+			self.encs+=1
 
 	def fifthArea(self,event):
 		self.bg = "fifth"		
@@ -156,7 +179,8 @@ class Painting(QtWidgets.QWidget):
 
 		self.backbutt.show()
 		self.forbutt.show()
-
+		if self.encs ==5:
+			self.encs+=1
 		self.show()
 		self.update()
 		self.prev = "fifth"
@@ -168,7 +192,11 @@ class Painting(QtWidgets.QWidget):
 		self.backbutt.clicked.connect(self.fifthArea)
 
 		self.backbutt.show()
-
+		if self.encs ==6:
+			self.fight(6)
+			self.bg="fight"
+			self.update()
+			self.encs+=1
 		self.show()
 		self.update()
 		self.prev = "sixth"
@@ -252,7 +280,6 @@ class Painting(QtWidgets.QWidget):
 
 				print("Enemy is taking a turn")
 			count+=1
-	
 		
 if __name__=="__main__":
 	app = QtWidgets.QApplication(sys.argv)
