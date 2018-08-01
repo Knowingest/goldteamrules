@@ -185,13 +185,29 @@ class Painting(QtWidgets.QWidget):
 		elif room==2:
 			#blub and 2 others
 			b.append(blub())
+			b.append(blub())
 			b.append(snek())
 		elif room==3:
 			#5 enemies
+			b.append(snek())
+			b.append(spooder())
+			b.append(skullitor)
+			b.append(blub())
+			b.append(blub())
 		elif room==4:
 			#big blub and 4 other enemies
+			b.append(bigblub())
+			b.append(snek())
+			b.append(snek())
+			b.append(skullitor())
+			b.append(blub())
 		elif room==6:
 			#mother and 4 other enemies
+			b.append(mother())
+			b.append(snek())
+			b.append(skullitor())
+			b.append(blub())
+			b.append(spooder())
 		charge=False
 		while ens !=0:
 			arena.print_board()
@@ -221,8 +237,10 @@ class Painting(QtWidgets.QWidget):
 							#do attack
 							if x==1:
 								#light attack
+								arena.take_turn(5,y-1)
 							elif x==2:
 								#heavy attack
+								arena.take_turn(15,y-1)
 							if b[y-1].hp<=0:
 								del b[y-1]
 							break
