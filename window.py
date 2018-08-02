@@ -1,7 +1,10 @@
+'''Example template'''
+
 import sys
-from encounter import *
-from enemy import *
+import random
+from encounter import encounter, player
 from PyQt5 import QtWidgets, QtGui, QtCore
+from enemy import *
 
 
 class Window(QtWidgets.QWidget):
@@ -18,6 +21,7 @@ class Window(QtWidgets.QWidget):
         self.p = Painting(self)
         self.show()
 
+
 class Painting(QtWidgets.QWidget):
     def __init__(self, parent):
         QtWidgets.QWidget.__init__(self, parent)
@@ -33,7 +37,7 @@ class Painting(QtWidgets.QWidget):
 
     def setup(self):
         self.butt = QtWidgets.QPushButton("Start Game", self)
-        self.butt.move(400, 400)
+        self.butt.move(650, 400)
         self.butt.clicked.connect(self.firstArea)
         self.forbutt = QtWidgets.QPushButton("Forwards", self)
         self.backbutt = QtWidgets.QPushButton("Backwards", self)
@@ -52,7 +56,7 @@ class Painting(QtWidgets.QWidget):
 
         bush = QtGui.QBrush()
         if self.bg == "first":
-            bush.setTextureImage(QtGui.QImage("./background1.png"))
+            bush.setTextureImage(QtGui.QImage("background1.png"))
         elif self.bg == "second":
             bush.setTextureImage(QtGui.QImage("background2.png"))
         elif self.bg == "third":
@@ -64,7 +68,7 @@ class Painting(QtWidgets.QWidget):
         elif self.bg == "sixth":
             bush.setTextureImage(QtGui.QImage("background6.png"))
         elif self.bg == "intro":
-            bush.setTextureImage(QtGui.QImage("./startscreen.png"))
+            bush.setTextureImage(QtGui.QImage("startscreen.png"))
         else:
             bush.setTextureImage(QtGui.QImage("bigarena.png"))
 
@@ -89,7 +93,7 @@ class Painting(QtWidgets.QWidget):
         self.update()
         self.buttcleaner()
 
-        self.forbutt.move(0, 0)
+        self.forbutt.move(800, 290)
         self.forbutt.clicked.connect(self.secondArea)
 
         self.forbutt.show()
@@ -105,10 +109,10 @@ class Painting(QtWidgets.QWidget):
     def secondArea(self, event):
         self.bg = "second"
         self.buttcleaner()
-        self.backbutt.move(20, 20)
+        self.backbutt.move(0, 290)
         self.backbutt.clicked.connect(self.firstArea)
 
-        self.forbutt.move(80, 80)
+        self.forbutt.move(800, 290)
         self.forbutt.clicked.connect(self.thirdArea)
 
         self.backbutt.show()
@@ -128,13 +132,13 @@ class Painting(QtWidgets.QWidget):
     def thirdArea(self, event):
         self.bg = "third"
         self.buttcleaner()
-        self.backbutt.move(0, 0)
+        self.backbutt.move(50, 550)
         self.backbutt.clicked.connect(self.secondArea)
 
-        self.forbutt.move(25, 25)
+        self.forbutt.move(700, 100)
         self.forbutt.clicked.connect(self.fourthArea)
 
-        self.kamikaze.move(127, 127)
+        self.kamikaze.move(800, 620)
         self.kamikaze.clicked.connect(self.fifthArea)
 
         self.backbutt.show()
@@ -158,7 +162,7 @@ class Painting(QtWidgets.QWidget):
     def fourthArea(self, event):
         self.bg = "fourth"
         self.buttcleaner()
-        self.backbutt.move(300, 300)
+        self.backbutt.move(0, 290)
         self.backbutt.clicked.connect(self.thirdArea)
 
         self.backbutt.show()
@@ -177,10 +181,10 @@ class Painting(QtWidgets.QWidget):
     def fifthArea(self, event):
         self.bg = "fifth"
         self.buttcleaner()
-        self.backbutt.move(14, 14)
+        self.backbutt.move(0, 290)
         self.backbutt.clicked.connect(self.thirdArea)
 
-        self.forbutt.move(129, 129)
+        self.forbutt.move(800, 290)
         self.forbutt.clicked.connect(self.sixthArea)
 
         self.backbutt.show()
@@ -194,7 +198,7 @@ class Painting(QtWidgets.QWidget):
     def sixthArea(self, event):
         self.bg = "sixth"
         self.buttcleaner()
-        self.backbutt.move(84, 84)
+        self.backbutt.move(300, 620)
         self.backbutt.clicked.connect(self.fifthArea)
 
         self.backbutt.show()
@@ -248,30 +252,48 @@ class Painting(QtWidgets.QWidget):
         arena = encounter(ilia, b)
         charge = False
         damage = 0
+        isdead = False
 
-        while ens != 0:
+        while ens != 0 and not isdead:
             arena.print_board()
             if charge == False:
                 while charge == False:
-                    x = int(input("Light attack (1)---takes 1 turn\nHeavy Attack (2)---takes 2 turns"))
+                    while True:
+                        tmp = input("Light attack (1)---takes 1 turn\nHeavy Attack (2)---takes 2 turns\n>: ")
+                        if tmp.isdigit():
+                            if int(tmp) in range(1, 3):
+                                x = int(tmp)
+                                break
+                            else:
+                                print("Try again! (1 or 2)")
+                        else:
+                            print("Try again! (1 or 2)")
                     # Light attack
                     if x == 1:
-                        damage = 5
+                        damage = random.randint(4, 7)
                         break
                     elif x == 2:
                         charge = True
-                        damage = 15
+                        damage = random.randint(13, 16)
                         break
                     else:
                         print("Excuse?")
                 ens = len(b)
 
                 while True:
-                    y = int(input("Choose target: "))  # enemy array
+                    if len(b) > 1:
+                        while True:
+                            temp = input("Choose target: \n>: ")
+                            if temp.isdigit():
+                                y = int(temp)  # enemy array
+                                break
+                            else:
+                                print("Please pick an number starting from 1")
+                    else:
+                        y = 1
                     # error check
                     if y > 0 and y <= ens:
-                        arena.take_turn(damage, (y - 1))
-
+                        isdead = arena.take_turn(damage, (y - 1))
                         if b[y - 1].hp <= 0:
                             del b[y - 1]
                             ens -= 1
@@ -282,13 +304,13 @@ class Painting(QtWidgets.QWidget):
             else:
                 print("Too tired to move this turn.")
                 charge = False
-                arena.take_turn(0, (y - 1))
+                arena.take_turn(0, 0)
 
-            if ens != 0:
-                print("Enemy is taking a turn")
-            else:
-                print("All Enemies DED")
-
+            if ens == 0:
+                print("Battle is over!")
+            if isdead:
+                print("You lost! Restart the game to retry!")
+                return 0
 
 
 if __name__ == "__main__":
