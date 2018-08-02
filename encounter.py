@@ -1,21 +1,5 @@
 import sys
 
-#Important information:
-#		encounter class:
-#				takes parameters player_hp, and enemy_number
-#		encounter.print_board():
-#				prints board information
-
-class baddie(): #stand-in enemy class
-	def __init__(self):
-		self.dmg = 0
-		self.hp = 5
-		self.msg = "Baddie does nothing"
-
-	def take_turn(self): 
-		self.dmg = 1
-		self.msg = "Baddie uses Slap!"
-
 class player(): #stand in player class
 	def __init__(self, hp):
 		self.hp = hp
