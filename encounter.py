@@ -37,7 +37,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 				sys.stdout.write("XX ")
 				sys.stdout.flush()
 			else:
-				sys.stdout.write("E" + str(i + 1) + " ")
+				sys.stdout.write(self.enemy_team[i].name + " ")
 				sys.stdout.flush()
 
 		print("\nP1")
@@ -45,7 +45,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 		for i in range(0, len(self.enemy_team)):
 			if (self.enemy_team[i].hp > 0):
-				print("E" + str(i + 1) + " HP = " + str(self.enemy_team[i].hp))
+				print(self.enemy_team[i].name + " HP = " + str(self.enemy_team[i].hp))
 
 		print("Player HP = " + str(self.p1.hp))
 
@@ -57,7 +57,7 @@ class encounter(): #basically, all combat will occur inside an instance of this 
 
 		for e in self.enemy_team:
 			if e.hp > 0:
-				#e.take_turn()
+				e.take_turn()
 				self.p1.hp -= e.dmg
 
 

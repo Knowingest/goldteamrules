@@ -13,7 +13,7 @@ class blub(object):
             x = random.randint(1, 2)
             if x == 1:
                 self.hp += 1
-                self.msg = "Blub is healing!\nBlub heals for " + x + " health."
+                self.msg = "Blub is healing!\nBlub heals for " + str(x) + " health."
         print(self.msg)
 
 class bigblub(object):
@@ -77,8 +77,8 @@ class skullitor(object):
         self.counter = 0
 
     def take_turn(self):
-        counter += 1
-        if (counter == 3):
+        self.counter += 1
+        if (self.counter == 3):
             self.dmg = random.randint(8, 12)
             self.msg = self.name + " casts a charged fire spell at you!"
             print(self.msg)
@@ -86,7 +86,7 @@ class skullitor(object):
             self.dmg = 0
             self.msg = self.name + " is charging an attack!"
             print(self.msg)
-            counter = 0
+            self.counter = 0
 
 class mother(object):
     def __init__(self):
