@@ -288,13 +288,14 @@ class Painting(QtWidgets.QWidget):
 
         if self.encs == 7:
             print("You Win!")
+            sys.exit()
 
     def fight(self, room):
         self.bg = "fight"
         self.update()
         b = list()
         counter = 0
-        ilia = player(25)
+        ilia = player(42)
         ens = 5
         # append enemies
         if room == 1:
