@@ -17,7 +17,7 @@ class Window(QtWidgets.QWidget):
 
     def setup(self):
         self.setGeometry(10, 10, self.width, self.height)
-        self.setWindowTitle("Testing")
+        self.setWindowTitle("The Game")
         self.p = Painting(self)
         self.show()
 
@@ -25,8 +25,6 @@ class Window(QtWidgets.QWidget):
 class Painting(QtWidgets.QWidget):
     def __init__(self, parent):
         QtWidgets.QWidget.__init__(self, parent)
-        # self.lay = QtWidgets.QWidget()
-        # self.grid = QtWidgets.QGridLayout()
         self.bg = "intro"
         self.prev = "lol"
 
@@ -35,6 +33,7 @@ class Painting(QtWidgets.QWidget):
 
         self.width = 888
         self.height = 684
+        self.dead = False
         self.setFixedSize(self.width, self.height)
         self.setup()
 
@@ -134,7 +133,7 @@ class Painting(QtWidgets.QWidget):
 
         app.processEvents()
 
-        if self.dialogProgress < 2:
+        if self.dialogProgress < 2 and not self.dead:
             self.dialogProgress = 2
             print("Ilia: Hey, water. Now I'll only starve to death.")
             print("Ilia: ...? There's something in here.")
@@ -169,7 +168,7 @@ class Painting(QtWidgets.QWidget):
 
         app.processEvents()
 
-        if self.dialogProgress < 3:
+        if self.dialogProgress < 3 and not self.dead:
             self.dialogProgress = 3
             print("\nIlia: A crossroads... That's neat. Which way, then?")
             print("\nSpooder: *hiss*")
@@ -250,7 +249,7 @@ class Painting(QtWidgets.QWidget):
 
         app.processEvents()
 
-        if self.dialogProgress < 6:
+        if self.dialogProgress < 6 and not self.dead:
             dialogProgress = 6
             print("\nIlia: Whoa... This is beautiful.")
             print("\nMother: Hello, my child. Are you alright?")
@@ -259,7 +258,7 @@ class Painting(QtWidgets.QWidget):
             print("\nIlia: I'm a little scuffed up, yeah, but I'm fine.")
             print("\nMother: Come here. Let me heal you.")
             print("\nApproach Mother? [Y/N]")
-            
+
             yesno = input()
             while yesno != "Y" and yesno != "y" and yesno != "N" and yesno != "n":
                 yesno = input("Only enter [Y/N]")
@@ -287,12 +286,15 @@ class Painting(QtWidgets.QWidget):
         self.update()
         self.prev = "sixth"
 
+        if self.encs == 7:
+            print("You Win!")
+
     def fight(self, room):
         self.bg = "fight"
         self.update()
         b = list()
         counter = 0
-        ilia = player(20)
+        ilia = player(25)
         ens = 5
         # append enemies
         if room == 1:
@@ -383,8 +385,10 @@ class Painting(QtWidgets.QWidget):
             if ens == 0:
                 print("Battle is over!")
             if isdead:
-                print("You lost! Restart the game to retry!")
-                return 0
+                print("You Died!")
+                self.dead = True
+                exit(0) # comment if not want to quit
+                # return 1 uncomment this if u comment out line above
 
 
 if __name__ == "__main__":
