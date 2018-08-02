@@ -111,6 +111,8 @@ class Painting(QtWidgets.QWidget):
         self.update()
         self.buttcleaner()
 
+        app.processEvents()
+
         self.forbutt.move(800, 290)
         self.forbutt.clicked.connect(self.secondArea)
 
@@ -118,13 +120,20 @@ class Painting(QtWidgets.QWidget):
         self.prev = "first"
         if self.encs == 1:
             self.bg = "fight"
+            app.processEvents()
             self.update()
             self.fight(1)
             self.encs += 1
             self.bg = "first"
             self.update()
+            app.processEvents()
 
     def secondArea(self, event):
+        self.bg = "second"
+        self.buttcleaner()
+
+        app.processEvents()
+
         if self.dialogProgress < 2:
             self.dialogProgress = 2
             print("Ilia: Hey, water. Now I'll only starve to death.")
@@ -132,8 +141,8 @@ class Painting(QtWidgets.QWidget):
             print("Ilia: ....")
             print("Ilia: \"Beware of mother...?\" What does that mean?")
 
-        self.bg = "second"
-        self.buttcleaner()
+        app.processEvents()
+
         self.backbutt.move(0, 290)
         self.backbutt.clicked.connect(self.firstArea)
 
@@ -155,14 +164,17 @@ class Painting(QtWidgets.QWidget):
             self.update()
 
     def thirdArea(self, event):
+        self.bg = "third"
+        self.buttcleaner()
+
+        app.processEvents()
+
         if self.dialogProgress < 3:
             self.dialogProgress = 3
             print("\nIlia: A crossroads... That's neat. Which way, then?")
             print("\nSpooder: *hiss*")
             print("\nIlia: Oh, this again. Guess I'll decide afterwards.")
 
-        self.bg = "third"
-        self.buttcleaner()
         self.backbutt.move(50, 550)
         self.backbutt.clicked.connect(self.secondArea)
 
@@ -191,6 +203,52 @@ class Painting(QtWidgets.QWidget):
             self.update()
 
     def fourthArea(self, event):
+        self.bg = "fourth"
+        self.buttcleaner()
+
+        app.processEvents()
+
+        self.backbutt.move(0, 290)
+        self.backbutt.clicked.connect(self.thirdArea)
+
+        self.backbutt.show()
+
+        self.show()
+        self.update()
+        self.prev = "fourth"
+        if self.encs == 4:
+            self.bg = "fight"
+            self.update()
+            self.fight(4)
+            self.encs += 1
+            self.bg = "fourth"
+            self.update()
+
+    def fifthArea(self, event):
+        self.bg = "fifth"
+        self.buttcleaner()
+
+        app.processEvents()
+
+        self.backbutt.move(0, 290)
+        self.backbutt.clicked.connect(self.thirdArea)
+
+        self.forbutt.move(800, 290)
+        self.forbutt.clicked.connect(self.sixthArea)
+
+        self.backbutt.show()
+        self.forbutt.show()
+        if self.encs == 5:
+            self.encs += 1
+        self.show()
+        self.update()
+        self.prev = "fifth"
+
+    def sixthArea(self, event):
+        self.bg = "sixth"
+        self.buttcleaner()
+
+        app.processEvents()
 
         if self.dialogProgress < 6:
             dialogProgress = 6
@@ -211,56 +269,21 @@ class Painting(QtWidgets.QWidget):
             else:
                 self.approachMother = False
 
-        self.bg = "fourth"
-        self.buttcleaner()
-        self.backbutt.move(0, 290)
-        self.backbutt.clicked.connect(self.thirdArea)
-
-        self.backbutt.show()
-
-        self.show()
-        self.update()
-        self.prev = "fourth"
-        if self.encs == 4:
-            self.bg = "fight"
-            self.update()
-            self.fight(4)
-            self.encs += 1
-            self.bg = "fourth"
-            self.update()
-
-    def fifthArea(self, event):
-        self.bg = "fifth"
-        self.buttcleaner()
-        self.backbutt.move(0, 290)
-        self.backbutt.clicked.connect(self.thirdArea)
-
-        self.forbutt.move(800, 290)
-        self.forbutt.clicked.connect(self.sixthArea)
-
-        self.backbutt.show()
-        self.forbutt.show()
-        if self.encs == 5:
-            self.encs += 1
-        self.show()
-        self.update()
-        self.prev = "fifth"
-
-    def sixthArea(self, event):
-        self.bg = "sixth"
-        self.buttcleaner()
         self.backbutt.move(300, 620)
         self.backbutt.clicked.connect(self.fifthArea)
 
         self.backbutt.show()
         if self.encs == 6:
             self.bg = "fight"
+            app.processEvents()
             self.update()
             self.fight(6)
             self.encs += 1
             self.bg = "sixth"
+            app.processEvents()
             self.update()
         self.show()
+        app.processEvents()
         self.update()
         self.prev = "sixth"
 
