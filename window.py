@@ -30,6 +30,9 @@ class Painting(QtWidgets.QWidget):
         self.bg = "intro"
         self.prev = "lol"
 
+        self.dialogProgress = 0
+        self.approachMother = False
+
         self.width = 888
         self.height = 684
         self.setFixedSize(self.width, self.height)
@@ -87,6 +90,21 @@ class Painting(QtWidgets.QWidget):
         self.update()
 
     def firstArea(self, event):
+        if self.dialogProgress < 1:
+            self.dialogProgress = 1;
+            print("Ilia: *groggily waking up* What happened?")
+            print("Ilia: Huh--? A cave-in?")
+            print("Ilia: This isn't good...")
+            print("Ilia: Guess I need to find a way out.")
+            print("Ilia: What is this place even? All these swirls...")
+            print("\nBlub: *squish*")
+            print("\nIlia: What... is that?")
+            print("\nBlub: *squiiiish*")
+            print("\nIlia: Gross. *pokes it with her sword*")
+            print("\nBlub: *SQUASH*")
+            print("\nIlia: Oh no. Good thing I brought this sword.")
+            print("\nBattle start!")
+
         self.bg = "first"
         self.prev = "intro"
         self.butt.setParent(None)
@@ -107,6 +125,13 @@ class Painting(QtWidgets.QWidget):
             self.update()
 
     def secondArea(self, event):
+        if self.dialogProgress < 2:
+            self.dialogProgress = 2
+            print("Ilia: Hey, water. Now I'll only starve to death.")
+            print("Ilia: ...? There's something in here.")
+            print("Ilia: ....")
+            print("Ilia: \"Beware of mother...?\" What does that mean?")
+
         self.bg = "second"
         self.buttcleaner()
         self.backbutt.move(0, 290)
@@ -130,6 +155,12 @@ class Painting(QtWidgets.QWidget):
             self.update()
 
     def thirdArea(self, event):
+        if self.dialogProgress < 3:
+            self.dialogProgress = 3
+            print("\nIlia: A crossroads... That's neat. Which way, then?")
+            print("\nSpooder: *hiss*")
+            print("\nIlia: Oh, this again. Guess I'll decide afterwards.")
+
         self.bg = "third"
         self.buttcleaner()
         self.backbutt.move(50, 550)
@@ -160,6 +191,26 @@ class Painting(QtWidgets.QWidget):
             self.update()
 
     def fourthArea(self, event):
+
+        if self.dialogProgress < 6:
+            dialogProgress = 6
+            print("\nIlia: Whoa... This is beautiful.")
+            print("\nMother: Hello, my child. Are you alright?")
+            print("\nIlia: Who are you?")
+            print("\nMother: My name is Mother. I've been watching your struggle. Are you hurt at all?")
+            print("\nIlia: I'm a little scuffed up, yeah, but I'm fine.")
+            print("\nMother: Come here. Let me heal you.")
+            print("\nApproach Mother? [Y/N]")
+            
+            yesno = input()
+            while yesno != "Y" and yesno != "y" and yesno != "N" and yesno != "n":
+                yesno = input("Only enter [Y/N]")
+
+            if yesno == "y" or yesno == "Y":
+                self.approachMother = True
+            else:
+                self.approachMother = False
+
         self.bg = "fourth"
         self.buttcleaner()
         self.backbutt.move(0, 290)
